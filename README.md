@@ -62,9 +62,9 @@ pip install pandas numpy scikit-learn lightgbm matplotlib seaborn rich
 
 3. Open and run the following notebooks:
 
-   - **Original_vs_Synthetic_Updated.ipynb**: This is the main analysis notebook. It loads both datasets, performs comparative training of models, visualizes results (Confusion Matrices, Performance Plots), and conducts hyperparameter tuning.
+   - **main.ipynb**: This is the main analysis notebook. It loads both datasets, performs comparative training of models, visualizes results (Confusion Matrices, Performance Plots), and conducts hyperparameter tuning.
    
-   - **Enlarged_dataset.ipynb**: This notebook focuses on generating the larger synthetic dataset, detailing data loading, feature analysis, and initial model testing.
+   - **enlarge_dataset.ipynb**: This notebook focuses on generating the larger synthetic dataset, detailing data loading, feature analysis, and initial model testing.
 
 4. Execute the cells sequentially to reproduce the analysis, training, and evaluation steps.
 
@@ -103,3 +103,4 @@ The results from the original dataset are compared against the synthetic dataset
 ## Results
 
 The analysis generates detailed classification reports and visual comparisons. Refer to the output cells in the notebooks for specific metric scores, execution times, and resource utilization graphs.
+
