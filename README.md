@@ -1,55 +1,105 @@
-# Crop Recommendation System: Data Analysis & Model Optimization
+# Crop Recommendation and Synthetic Data Analysis
 
-This repository contains an analysis of crop recommendation datasets, focusing on the comparison between original field data and an enlarged synthetic dataset generated using TVAE (Tabular Variational Autoencoder). The project explores data statistics, trains multiple machine learning classifiers, and performs hyperparameter tuning.
+This repository contains the code and resources for a machine learning project focused on crop recommendation. The primary objective is to evaluate and compare the performance of various classification algorithms on an original agricultural dataset versus an enlarged dataset augmented with synthetic data.
 
-## 📂 Files Overview
+## Project Overview
 
-### 1. `Enlarged_dataset.ipynb`
-**Focus:** Exploratory Data Analysis (EDA) on the Augmented Dataset.
+Precision agriculture relies on accurate data to recommend the most suitable crops for specific soil and climatic conditions. This project investigates the utility of synthetic data generation (specifically using TVAE) in machine learning pipelines. It includes:
 
-This notebook focuses on analyzing the large-scale synthetic dataset (81,000 samples) to ensure its statistical quality and understand the distribution of agricultural features.
+* Exploratory Data Analysis (EDA) of agricultural features.
+* Training and tuning multiple machine learning classifiers.
+* Comparative analysis of model performance (accuracy, precision, recall, F1-score) on original versus synthetic datasets.
+* Resource usage monitoring (CPU and Memory) during training.
 
-* **Key Features:**
-    * **Data Loading:** Imports the `synthetic_crop_data_tvae.csv` containing ~81k records.
-    * **Statistical Summary:** Generates global statistics (Mean, Std Dev, Quartiles) for features like Nitrogen (N), Phosphorus (P), Potassium (K), Temperature, Humidity, pH, and Rainfall.
-    * **Crop-wise Analysis:** Uses custom formatting to breakdown feature statistics specifically for each label (e.g., Apple, Banana, Rice), helping identify specific requirements for each crop.
-    * **Infrastructure:** Sets up the environment with libraries for data manipulation (`pandas`, `numpy`) and visualization (`seaborn`, `rich`).
+## Datasets
 
-### 2. `Original_vs_Synthetic_Updated.ipynb`
-**Focus:** Model Benchmarking & Hyperparameter Tuning.
+The project utilizes two primary data sources:
 
-This notebook establishes a robust pipeline to compare machine learning performance between the original dataset (2,200 samples) and the synthetic dataset.
+1.  **Original Dataset** (`Crop_recommendation.csv`): Contains real-world agricultural data.
+2.  **Synthetic Dataset** (`synthetic_crop_data_tvae.csv`): An augmented dataset generated to increase sample size and diversity while maintaining statistical properties of the original data.
 
-* **Key Features:**
-    * **Comparative Training:** Defines a `train_models()` workflow to train 7 classifiers on both datasets simultaneously:
-        * Decision Tree, Logistic Regression, Random Forest, LightGBM, SVC, Naive Bayes, and K-Nearest Neighbors.
-    * **Evaluation Metrics:** Implements `compare_models()` to visualize side-by-side Confusion Matrices and calculate Accuracy, Precision, Recall, and F1-Scores.
-    * **Advanced Tuning (Optuna):**
-        * **TPE Sampler:** Used for complex models like Random Forest and LightGBM to efficiently search hyperparameter space.
-        * **Bayesian Optimization:** Used for models like Decision Trees and KNN to minimize evaluations while maximizing accuracy.
-    * **Results:** Concludes with specific recommendations on which models perform best for this specific tabular data (e.g., finding that Random Forest and LightGBM benefit significantly from Optuna tuning).
+### Features
+* **N**: Ratio of Nitrogen content in soil
+* **P**: Ratio of Phosphorous content in soil
+* **K**: Ratio of Potassium content in soil
+* **temperature**: Temperature in degree Celsius
+* **humidity**: Relative humidity in %
+* **ph**: pH value of the soil
+* **rainfall**: Rainfall in mm
+* **label**: The target crop class
 
----
+## Requirements
 
-## 🛠️ Setup & Installation
+To run the code in this repository, you need Python 3.x and the following libraries installed:
 
-1.  **Environment:** Ensure you have a Python environment (Python 3.8+) with Jupyter installed.
-2.  **Dependencies:** Install the required libraries using pip:
+* pandas
+* numpy
+* scikit-learn
+* lightgbm
+* matplotlib
+* seaborn
+* rich
 
-    ```bash
-    pip install pandas numpy seaborn matplotlib scikit-learn lightgbm optuna rich
-    ```
+## Installation
 
-3.  **Data:**
-    * Ensure `Crop_recommendation.csv` (Original) and `synthetic_crop_data_tvae.csv` (Synthetic) are placed in the directory specified in the notebooks (or update the file paths in the first code cell).
+1.  Clone this repository to your local machine.
+2.  Ensure you have Python installed.
+3.  Install the required dependencies using pip:
 
-## 🚀 Usage
+```bash
+pip install pandas numpy scikit-learn lightgbm matplotlib seaborn rich
+```
+## Usage
 
-1.  **Step 1: Data validation**
-    Run `Enlarged_dataset.ipynb` first to understand the statistical properties of the synthetic data. Review the "Crop-wise Summary Statistics" tables to verify that the synthetic data preserves the biological requirements of the plants (e.g., Rice requiring high rainfall).
+### Getting Started
 
-2.  **Step 2: Modeling & Comparison**
-    Run `Original_vs_Synthetic_Updated.ipynb`.
-    * **Training:** The notebook will automatically train all classifiers on both datasets.
-    * **Comparison:** Look for the side-by-side plots to see if the synthetic data successfully trains models that generalize well (or if it introduces noise).
-    * **Tuning:** The final sections run Optuna trials. This may take time; monitor the "Best Score" logs to see real-time optimization.
+1. Navigate to the repository folder in your terminal or command prompt.
+
+2. Start the Jupyter Notebook server:
+```bash
+   jupyter notebook
+```
+
+3. Open and run the following notebooks:
+
+   - **Original_vs_Synthetic_Updated.ipynb**: This is the main analysis notebook. It loads both datasets, performs comparative training of models, visualizes results (Confusion Matrices, Performance Plots), and conducts hyperparameter tuning.
+   
+   - **Enlarged_dataset.ipynb**: This notebook focuses on the larger synthetic dataset, detailing data loading, feature analysis, and initial model testing.
+
+4. Execute the cells sequentially to reproduce the analysis, training, and evaluation steps.
+
+## Models Implemented
+
+The project evaluates the following classification algorithms:
+
+- Logistic Regression
+- Decision Tree Classifier
+- Random Forest Classifier
+- LightGBM Classifier
+- Support Vector Classifier (SVC)
+- Gaussian Naive Bayes
+- K-Nearest Neighbors (KNN)
+
+## Methodology
+
+### 1. Data Loading & Preprocessing
+The data is loaded using Pandas. The datasets are split into training and testing sets.
+
+### 2. Model Training
+Each of the seven classifiers is initialized and fitted to the training data.
+
+### 3. Evaluation
+Models are evaluated on the test set using standard metrics:
+- Accuracy
+- Precision, Recall, and F1-Score (weighted averages)
+- Confusion Matrices
+
+### 4. Hyperparameter Tuning
+`RandomizedSearchCV` is used to find optimal parameters for models like LightGBM, Decision Tree, Random Forest, and SVC.
+
+### 5. Comparison
+The results from the original dataset are compared against the synthetic dataset to assess the quality and utility of the synthetic data generation.
+
+## Results
+
+The analysis generates detailed classification reports and visual comparisons. Refer to the output cells in the notebooks for specific metric scores, execution times, and resource utilization graphs.
