@@ -1,6 +1,6 @@
-# Crop Recommendation and Synthetic Data Analysis
+# NBUC: ITU Project Crop Recommendation
 
-This repository contains the code and resources for the machine learning project submitted to ITU in collaboration with Nokia focused on crop recommendation. The primary objective is to evaluate and compare the performance of various classification algorithms on an original agricultural dataset versus an enlarged dataset augmented with synthetic data, and using hyperparameter fine-tuning to re-train models as more data is aquired to select the best model.
+This repository contains the code and resources for the machine learning project in collaboration with Nokia submitted to ITU focused on crop recommendation. The primary objective is to evaluate and compare the performance of various classification algorithms on an original agricultural dataset versus an enlarged dataset augmented with synthetic data, and using hyperparameter fine-tuning to re-train models as more data is aquired to select the best model.
 
 ## Project Overview
 
@@ -103,4 +103,5 @@ The results from the original dataset are compared against the synthetic dataset
 ## Results
 
 The analysis generates detailed classification reports and visual comparisons. Refer to the output cells in the notebooks for specific metric scores, execution times, and resource utilization graphs.
+
 
