@@ -1,6 +1,6 @@
 # Crop Recommendation and Synthetic Data Analysis
 
-This repository contains the code and resources for a machine learning project focused on crop recommendation. The primary objective is to evaluate and compare the performance of various classification algorithms on an original agricultural dataset versus an enlarged dataset augmented with synthetic data.
+This repository contains the code and resources for the machine learning project submitted to ITU in collaboration with Nokia focused on crop recommendation. The primary objective is to evaluate and compare the performance of various classification algorithms on an original agricultural dataset versus an enlarged dataset augmented with synthetic data, and using hyperparameter fine-tuning to re-train models as more data is aquired to select the best model.
 
 ## Project Overview
 
@@ -64,7 +64,7 @@ pip install pandas numpy scikit-learn lightgbm matplotlib seaborn rich
 
    - **Original_vs_Synthetic_Updated.ipynb**: This is the main analysis notebook. It loads both datasets, performs comparative training of models, visualizes results (Confusion Matrices, Performance Plots), and conducts hyperparameter tuning.
    
-   - **Enlarged_dataset.ipynb**: This notebook focuses on the larger synthetic dataset, detailing data loading, feature analysis, and initial model testing.
+   - **Enlarged_dataset.ipynb**: This notebook focuses on generating the larger synthetic dataset, detailing data loading, feature analysis, and initial model testing.
 
 4. Execute the cells sequentially to reproduce the analysis, training, and evaluation steps.
 
